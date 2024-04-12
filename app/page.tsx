@@ -18,10 +18,10 @@ export default function Home() {
       My true passion for technology, web development, and tech, in general, has led me to choose to pursue my career in software engineering.
       </div>
       <div>My first ever encounter with coding was in 2017 where I bought a udemy course and never finished it, in fact I gived up half way because I could not understand anything.
-        But here I am, a few years later, proficient in many programming languages and frameworks such as React, Node.js, Java, and Python. I have also worked on many projects, some of which are available on my GitHub profile.
+        But here I am, a few years later, proficient in many programming languages and frameworks such as React, Node.js,<Technology logo={java} text="Java" />,<Technology logo={next} text="Next.js" />, and Python. I have also worked on many projects, some of which are available on my GitHub profile.
         <Technology logo={githubwhite} text="GitHub" />
-        <Technology logo={java} text="Java" />
-        <Technology logo={next} text="Next.js" />
+        
+        
       </div>
       <div className="flex justify-center">
         <BulletinBoard />
