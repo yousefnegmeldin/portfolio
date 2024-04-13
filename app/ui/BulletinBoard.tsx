@@ -1,11 +1,12 @@
 import React from 'react'
 import BoardBackground from './BoardBackground'
+import githubwhite from '../../public/github-mark-white.svg'
+import Technology from './Technology'
 
 const BulletinBoard = () => {
   return (
-    <>
-        <BoardBackground width={400} height={400} />
-    </>
+    <div className='relative'>
+    </div>
   )
 }
 
