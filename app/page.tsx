@@ -12,6 +12,7 @@ import java from '../public/java.svg'
 import next from '../public/nextjs.svg'
 import apple from '../public/apple.jpg'
 import BentoBox from "./ui/BentoBox";
+import BentoBoxFlex from "./ui/BentoBoxFlex";
 export default function Home() {
   return (
     <main className="flex flex-col items-center gap-8 mt-16">
@@ -29,7 +30,8 @@ export default function Home() {
       </div>
       <h1 className="self-start">my current skillset: </h1>
       <div className="w-[1400px]">
-        <BentoBox />
+        {/* <BentoBox /> */}
+        <BentoBoxFlex />
       </div>
     </main>
   );
