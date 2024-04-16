@@ -11,6 +11,7 @@ import line_3 from '../public/line-3.svg'
 import java from '../public/java.svg'
 import next from '../public/nextjs.svg'
 import apple from '../public/apple.jpg'
+import BentoBox from "./ui/BentoBox";
 export default function Home() {
   return (
     <main className="flex flex-col items-center gap-8 mt-16">
@@ -27,8 +28,8 @@ export default function Home() {
         <SocialLink imgSrc={githubwhite} text={"GitHub"} link="http://github.com/yousefnegmeldin" />
       </div>
       <h1 className="self-start">my current skillset: </h1>
-      <div className="">
-        <Image src={apple} alt="bento" width={1200} />
+      <div className="w-[1400px]">
+        <BentoBox />
       </div>
     </main>
   );
