@@ -29,7 +29,7 @@ export default function Home() {
         <SocialLink imgSrc={githubwhite} text={"GitHub"} link="http://github.com/yousefnegmeldin" />
       </div>
       <h1 className="self-start">my current skillset: </h1>
-      <div className="w-[1400px]">
+      <div className="w-[1400px] flex justify-center">
         {/* <BentoBox /> */}
         <BentoBoxFlex />
       </div>
