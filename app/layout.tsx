@@ -18,15 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased max-w-3xl mb-40 flex flex-col mx-4 mt-8 lg:mx-auto`}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
             <Navbar />
             {children}
-          </ThemeProvider>
       </body>
     </html>
   );
