@@ -28,9 +28,19 @@ export default function Home() {
         <SocialLink imgSrc={LinkedIn} text={"LinkedIn"} link="https://www.linkedin.com/in/yousef-negmeldin-bb3683229/"/>
         <SocialLink imgSrc={githubwhite} text={"GitHub"} link="http://github.com/yousefnegmeldin" />
       </div>
-      <h1 className="self-start">my current skillset: </h1>
-      <div className="w-[1400px] flex justify-center">
-        {/* <BentoBox /> */}
+      <h1 className="self-start"></h1>
+      <div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi tempore, consequatur et sunt officia labore blanditiis recusandae quae suscipit odit saepe ad dolorum est perspiciatis ullam error? Eius, eaque sequi?
+    Aliquid reiciendis quaerat enim aspernatur nostrum distinctio? Quis ad totam perspiciatis in voluptas quod eaque recusandae qui nemo expedita nam aut veritatis, nisi, eius odit aperiam rem esse pariatur dolorem.
+    Natus voluptatem officia tenetur eius atque est, vel sequi architecto esse nostrum. Doloribus ullam aliquam, quam nulla excepturi illum quo eum inventore ab est. Sit eveniet maxime culpa provident architecto.
+    Sunt rem eligendi nulla odio amet natus reprehenderit deserunt sint voluptates praesentium blanditiis vitae ipsa nam, excepturi perferendis itaque architecto alias dolorem! Molestiae expedita repudiandae a vitae aut ab hic.
+    Dolor maiores iste deserunt ea ex quas, numquam eveniet repellat illum. Expedita laudantium asperiores libero velit veritatis ut dolorem atque itaque quia tempora! Minus tempora laudantium aut quidem necessitatibus dignissimos!
+    Aperiam sequi pariatur ducimus tempore explicabo mollitia, minima dolore hic, incidunt libero facere vero et soluta, fugiat est nobis molestias nesciunt voluptatum excepturi rem! Culpa amet saepe dolor tempora a?
+      </div>
+      <div>
+
+      </div>
+      <div className="flex justify-center">
         <BentoBoxFlex />
       </div>
     </main>

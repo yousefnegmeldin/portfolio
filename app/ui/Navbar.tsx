@@ -1,9 +1,10 @@
-import Link from 'next/link';
+"use client"
+import Link from 'next/link'
 import React,{FC} from 'react'
-
+import {ThemeButton} from './ThemeButton'
 const Navbar:FC = () => {
   return (
-    <nav>
+    <nav className='flex justify-between items-center'>
         <div className='flex gap-6'>
             <Link href="/">
                 home
@@ -15,6 +16,7 @@ const Navbar:FC = () => {
                 blog
             </Link>
         </div>
+        <ThemeButton />
     </nav>
   )
 }
