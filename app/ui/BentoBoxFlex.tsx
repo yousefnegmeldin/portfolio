@@ -70,7 +70,7 @@ const BentoBoxFlex = () => {
             initial="initial" 
             whileInView="animate"
             transition={{ ease: "backInOut", duration: 0.5,delay:0.1 }}
-            // viewport={{once:true}} 
+            viewport={{once:true}} 
             className={`${globalStyle}  w-[223px] h-[114px]`}
             >
                 <Image src={mongoDB} alt="mongoDB logo" />
@@ -81,6 +81,7 @@ const BentoBoxFlex = () => {
             initial="initial" 
             whileInView="animate"
             transition={{ ease: "backInOut", duration: 0.5,delay:0.6 }}
+            viewport={{once:true}}
             className={`${globalStyle} w-[223px] h-[165px] `}
             >
                 <Image src={javascript} alt="javascript logo" />
@@ -93,6 +94,7 @@ const BentoBoxFlex = () => {
                 initial="initial" 
                 whileInView="animate"
                 transition={{ ease: "backInOut", duration: 0.5,delay:0.3 }}
+                viewport={{once:true}}
                 className={`${globalStyle} w-[237px] h-[113px]`}
                 >
                     <Image src={express} alt="express logo" height={100} />
@@ -102,6 +104,7 @@ const BentoBoxFlex = () => {
                 initial="initial" 
                 whileInView="animate"
                 transition={{ ease: "backInOut", duration: 0.5,delay:0.4 }} 
+                viewport={{once:true}}
                 className={`${globalStyle} w-[204px] h-[113px]` }
                 >
                     <Image src={rest} alt="rest logo"  />
@@ -110,7 +113,8 @@ const BentoBoxFlex = () => {
                 variants={fadeInDownAnimation} 
                 initial="initial" 
                 whileInView="animate"
-                transition={{ ease: "backInOut", duration: 0.5,delay:0.8 }} 
+                transition={{ ease: "backInOut", duration: 0.5,delay:0.8 }}
+                viewport={{once:true}} 
                 className={`${globalStyle} grow`}
                 >
                     <Image src={cpp} alt="c++ logo" height={100}  />
@@ -121,6 +125,7 @@ const BentoBoxFlex = () => {
             initial="initial" 
             whileInView="animate"
             transition={{ ease: "backInOut", duration: 0.5,delay:0.2 }}
+            viewport={{once:true}}
             className={`${globalStyle} col-span-3 w-[673px] h-[235px]` }
             >
                 <Image src={react} alt="React logo"  />
@@ -130,7 +135,8 @@ const BentoBoxFlex = () => {
             variants={fadeInUpAnimation} 
             initial="initial" 
             whileInView="animate"
-            transition={{ ease: "backInOut", duration: 0.5,delay:0.7 }} 
+            transition={{ ease: "backInOut", duration: 0.5,delay:0.7 }}
+            viewport={{once:true}} 
             className={`${globalStyle} col-span-3 w-[673px] h-[159px] `}
             >
                 <Image src={nextLogo} alt="Next.js logo"  />
@@ -142,7 +148,8 @@ const BentoBoxFlex = () => {
             variants={fadeInRightAnimation} 
             initial="initial" 
             whileInView="animate"
-            transition={{ ease: "backInOut", duration: 0.5,delay:0.5 }} 
+            transition={{ ease: "backInOut", duration: 0.5,delay:0.5 }}
+            viewport={{once:true}} 
             className={`${globalStyle} w-[200px] h-[200px]`}
             >
                 <Image src={node} alt="node.js logo"  />
@@ -151,7 +158,8 @@ const BentoBoxFlex = () => {
             variants={fadeInRightAnimation} 
             initial="initial" 
             whileInView="animate"
-            transition={{ ease: "backInOut", duration: 0.5,delay:0.9 }}  
+            transition={{ ease: "backInOut", duration: 0.5,delay:0.9 }}
+            viewport={{once:true}}  
             className={`${globalStyle} w-[200px] h-[100px]`}
             >
                 <Image src={python} alt="python logo"  />
@@ -161,7 +169,8 @@ const BentoBoxFlex = () => {
             variants={fadeInRightAnimation} 
             initial="initial" 
             whileInView="animate"
-            transition={{ ease: "backInOut", duration: 0.5,delay:1 }} 
+            transition={{ ease: "backInOut", duration: 0.5,delay:1 }}
+            viewport={{once:true}} 
             className={`${globalStyle} w-[200px] h-[207px]`}
             >
                 <Image src={java} alt="java logo"  />

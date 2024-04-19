@@ -16,6 +16,7 @@ import BentoBoxFlex from "./ui/BentoBoxFlex";
 import me from '../public/pictures/me.jpeg'
 import setup from '../public/pictures/setup.jpeg'
 import gmail from '../public/logos/gmail.svg'
+import X from '../public/logos/X.svg'
 export default function Home() {
   return (
     <main className="flex flex-col items-center gap-8 mt-16">
@@ -39,7 +40,8 @@ export default function Home() {
       </div>
       <div className="flex justify-center gap-5 flex-wrap">
         <SocialLink imgSrc={LinkedIn} text={"LinkedIn"} link="https://www.linkedin.com/in/yousef-negmeldin-bb3683229/"/>
-        <SocialLink imgSrc={githubwhite} text={"GitHub"} link="http://github.com/yousefnegmeldin" />
+        <SocialLink imgSrc={X} text={"Twitter/X"} link='https://twitter.com/youseffnegm' />
+        {/* <SocialLink imgSrc={githubwhite} text={"GitHub"} link="http://github.com/yousefnegmeldin" /> */}
         <SocialLink imgSrc={gmail} text="Email" link="mailto:yousefnegmdev@gmail.com" />
       </div>
       <div>
