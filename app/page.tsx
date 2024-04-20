@@ -1,30 +1,24 @@
 import Image from "next/image";
-import BulletinBoard from "./ui/BulletinBoard";
 import SocialLink from "./ui/SocialLink";
-import LinkedIn from "../public/linkedin.svg";
-import github from '../public/github-mark.svg'
-import githubwhite from '../public/github-mark-white.svg'
+import LinkedIn from "../public/logos/linkedin.svg";
 import Anchor from '../app/ui/Anchor'
 import Technology from "./ui/Technology";
-import whitebox from '../public/whitebox.svg'
-import line_3 from '../public/line-3.svg'
-import java from '../public/java.svg'
-import next from '../public/nextjs.svg'
-import apple from '../public/apple.jpg'
-import BentoBox from "./ui/BentoBox";
+import java from '../public/logos/java.svg'
+import next from '../public/logos/nextjs.svg'
 import BentoBoxFlex from "./ui/BentoBoxFlex";
 import me from '../public/pictures/me.jpeg'
 import setup from '../public/pictures/setup.jpeg'
 import gmail from '../public/logos/gmail.svg'
 import X from '../public/logos/X.svg'
+
 export default function Home() {
   return (
     <main className="flex flex-col items-center gap-8 mt-16">
       <h2 className="text-2xl font-bold italic self-start">Hey, I&apos;m Yousef! 👋</h2>
-      <div>I&apos;m a 2nd year student at the <Anchor link="www.giu-uni.de" text="German International University"/> in Cairo, Egypt. 
+      <div className="">I&apos;m a 2nd year student at the <Anchor link="https://www.giu-uni.de/" text="German International University"/> in Cairo, Egypt. 
       My true passion for technology, web development, and tech, in general, has led me to choose to pursue my career in software engineering.
       </div>
-      <div className="flex justify-center items-center gap-5">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-5">
         <Image src={me} alt="Yousef Negmeldin" height={300} quality={100} className="rounded-xl"/>
         <Image src={setup} alt="My setup" width={500}  quality={100} className="rounded-xl"/>
       </div>

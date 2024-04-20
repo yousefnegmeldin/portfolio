@@ -1,7 +1,6 @@
 import React,{FC} from 'react'
 import Image, { StaticImageData } from 'next/image'
 import white_link from '../../public/whitelink.svg'
-import link from '../../public/link.svg'
 
 type SocialLinkProps = {
     text: string,

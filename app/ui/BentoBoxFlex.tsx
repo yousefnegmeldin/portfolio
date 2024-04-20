@@ -1,12 +1,20 @@
 "use client"
-import React from 'react'
+import React, { use } from 'react'
 import images from '../../public/bentobox/index.js'
 import Image from 'next/image'
 import { motion } from "framer-motion"
+import MobileTech from './MobileTech'
+import { useEffect,useState } from 'react'
+import useDeviceSize from '../_hooks/useDeviceSize'
 const BentoBoxFlex = () => {
+    const [width, height] = useDeviceSize();
 
+    const mobile = !(width<1200);
+   
     const {aws,cpp,express,java,javascript,node,mongoDB,python,rest,react,nextLogo,nextText} = images;
     const globalStyle = 'bg-[#0A0A0A] border-[#383838] border rounded-2xl flex justify-center items-center';
+    
+
 
     const fadeInLeftAnimation = {
         initial:{
@@ -53,7 +61,10 @@ const BentoBoxFlex = () => {
     }
 
   return (
-    <div className='flex justify-center items-center gap-2.5 w-[1200px] h-[540px]'>
+    <div>
+
+    
+    {mobile?<div className='flex justify-center items-center gap-2.5 w-[1200px] h-[540px]'>
         <div className='flex flex-col gap-2.5'>
             <motion.div 
             variants={fadeInLeftAnimation} 
@@ -177,6 +188,7 @@ const BentoBoxFlex = () => {
             </motion.div>
         </div>
         
+    </div>:<div><MobileTech /></div>}
     </div>
   )
 }
