@@ -7,6 +7,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('http://localhost:3000'),
   title: "yousef negm",
   description: "yousef negm, an aspiring software engineer.",
 };
