@@ -10,7 +10,8 @@ import rest from './rest.svg'
 import react from './react.svg'
 import nextLogo from './nextLogo.svg'
 import nextText from './nextText.svg'
+import sql from './sql.svg'
 
-const images = {aws,cpp,express,java,javascript,node,mongoDB,python,rest,react,nextLogo,nextText};
+const images = {sql,cpp,express,java,javascript,node,mongoDB,python,rest,react,nextLogo,nextText};
 
 export default images;
