@@ -25,7 +25,7 @@ const MobileTech = () => {
         hidden: { opacity: 0, x: -100 },
       }
 
-    const {aws,cpp,express,java,javascript,node,mongoDB,python,rest,react,nextLogo,nextText} = images;
+    const {sql,cpp,express,java,javascript,node,mongoDB,python,rest,react,nextLogo} = images;
     const tech = [
         {name:'Java',logo:java},
         {name:'Next.js',logo:nextLogo},
@@ -35,7 +35,7 @@ const MobileTech = () => {
         {name:'Node.js',logo:node},
         {name:'Python',logo:python},
         {name:'C++',logo:cpp},
-        {name:'AWS',logo:aws},
+        {name:'AWS',logo:sql},
         {name:'REST',logo:rest}
     ]
   return (
