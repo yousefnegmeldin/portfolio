@@ -11,7 +11,7 @@ const BentoBoxFlex = () => {
 
     const mobile = !(width<1200);
    
-    const {aws,cpp,express,java,javascript,node,mongoDB,python,rest,react,nextLogo,nextText} = images;
+    const {sql,cpp,express,java,javascript,node,mongoDB,python,rest,react,nextLogo,nextText} = images;
     const globalStyle = 'bg-[#0A0A0A] border-[#383838] border rounded-2xl flex justify-center items-center';
     
 
@@ -72,9 +72,9 @@ const BentoBoxFlex = () => {
             whileInView="animate" 
             viewport={{once:true}} 
             transition={{ ease: "backInOut", duration: 0.5 }}
-            className={`${globalStyle} w-[223px] h-[227px]`}
+            className={`${globalStyle} w-[223px] h-[227px] p-4`}
             >
-                <Image src={aws} alt="aws logo" />
+                <Image src={sql} alt="SQL logo" />
             </motion.div>
             <motion.div 
             variants={fadeInLeftAnimation} 
