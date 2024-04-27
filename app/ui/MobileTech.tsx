@@ -35,7 +35,7 @@ const MobileTech = () => {
         {name:'Node.js',logo:node},
         {name:'Python',logo:python},
         {name:'C++',logo:cpp},
-        {name:'AWS',logo:sql},
+        {name:'SQL',logo:sql},
         {name:'REST',logo:rest}
     ]
   return (
