@@ -19,8 +19,8 @@ export default function Home() {
       My true passion for technology, web development, and tech, in general, has led me to choose to pursue my career in software engineering.
       </div>
       <div className="flex flex-col lg:flex-row justify-center items-center gap-5">
-        <Image src={me} alt="Yousef Negmeldin" height={300} quality={100} className="rounded-xl border border-zinc-700"/>
-        <Image src={setup} alt="My setup" width={530}  quality={100} className="rounded-xl border border-zinc-700"/>
+        <Image src={me} alt="Yousef Negmeldin" height={300} quality={100} className="rounded-xl "/>
+        <Image src={setup} alt="My setup" width={530}  quality={100} className="rounded-xl "/>
       </div>
       <div>
         I am exploring the world of fullstack development and I love having the ability of crafting beautiful and functional web applications.
