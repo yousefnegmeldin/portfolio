@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET(req, { params }) {
   try {
     const id = params.id;
-    const counterFilePath = path.resolve(`counters/blog${id}.txt`);
+    const counterFilePath = path.resolve(`public/counters/blog${id}.txt`);
     let count = 0;
     if (fs.existsSync(counterFilePath)) {
       count = parseInt(fs.readFileSync(counterFilePath, "utf8")) || 0;
