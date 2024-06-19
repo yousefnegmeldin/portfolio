@@ -10,6 +10,7 @@ const Page = () => {
         const fetchPageViews = async ()=>{
           const res = await fetch('/api/pageview/2');
           const data = await res.json();
+          console.log(data);
           setViews(data.count);
         }
     
