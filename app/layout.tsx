@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] });
 
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.yousefnegm.dev/'),
   title: "yousef negm",
@@ -22,9 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">      
-      <body className={`${inter.className} antialiased max-w-3xl mb-40 flex flex-col mx-4 mt-8 lg:mx-auto`}>
+      <body className={`${inter.className} bg-black text-white antialiased max-w-3xl mb-40 flex flex-col mx-4 mt-8 lg:mx-auto`}>
             <Navbar />
-            {children}
+            
+              {children} 
+            
+            
             <SpeedInsights />
             <Analytics />
       </body>
