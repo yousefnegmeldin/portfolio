@@ -8,14 +8,14 @@ const page = () => {
       <p>My work ranges from web development to university projects using a wide variety of programming languages,
         but I mainly focus on web development as it is my passion and hobby.</p>
       
-      <div className='w-full border bg-[#0A0A0A] border-[#383838] rounded-md p-4 flex flex-col'>
+      <div className='w-full border bg-[#0A0A0A] border-[#383838] rounded-md p-2 lg:p-4 flex flex-col'>
         <div className='flex justify-between'>
           <h3 className='text-xl'><Anchor text={"Wavemakers United"} link="https://wavemakersunited.com/" /></h3>
-          <p className='italic'>Feb 2024 - Current</p>
+          <p className='italic flex-wrap'>Feb 2024 - Current</p>
         </div>
-        <p className='my-1 text-sm'>Backend Developer</p>
-        <p className='mt-1 text-base'>I was responsible for creating a backend for a social media app. </p>
-        <ul className='list-disc ml-8 mt-1 text-base'>
+        <p className='my-4 lg:mt-1 text-sm'>Backend Developer</p>
+        <p className='mt-4 lg:mt-1 text-base'>I was responsible for creating a backend for a social media app. </p>
+        <ul className='list-disc ml-8 mt-4 lg:mt-1 text-base'>
           <li>
           Wrote out API documentation for 20+ API endpoints using Postman.
           </li>
