@@ -1,17 +1,18 @@
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
-import setup from '../../public/pictures/green.jpg'
+import golang from '../../public/blogs/golang_summer.jpg'
 import Blog from '../ui/Blog'
 const page = () => {
   return (
     <div className='w-full flex justify-center mt-16 '>
       <main className='flex justify-center flex-wrap gap-4' >
         <Blog 
-          title="Finally Understand Javascript Promises"
-          date="June 21, 2024"
-          alt="green"
-          imageSrc={setup}
+          title="How I'll be spending my 2024 summer"
+          date="June 22, 2024"
+          linkTo = "/blog/2024_summer"
+          alt="Gopher"
+          imageSrc={golang}
         />
       </main>
     </div>

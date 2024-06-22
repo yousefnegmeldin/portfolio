@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">      
+    <html lang="en" data-theme="dark">    
       <body className={`${inter.className} bg-black text-white antialiased max-w-3xl mb-40 flex flex-col mx-4 mt-8 lg:mx-auto`}>
             <Navbar />
             
