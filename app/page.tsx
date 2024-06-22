@@ -28,14 +28,9 @@ export default function Home() {
         I also love randomly solving leetcode problems at 3AM using <Technology logo={java} text="Java"/>, the best OOP language out there in my humble opinion.
       </div>
 
-      <div>
-        Since this is my portfolio, I have the right to humbly brag about myself, right? 😅 I&apos;m just going to brag about one thing, and that is my ability to solve <span className="font-bold text-2xl underline">any</span> problem presented to me as long as I have a reasonable time to do so.
-        So if you have any developer problems that you think I can help with, do not hesitate to reach out to me. I would love to help you out.
-      </div>
       <div className="flex justify-center gap-5 flex-wrap">
         <SocialLink imgSrc={LinkedIn} text={"LinkedIn"} link="https://www.linkedin.com/in/yousef-negmeldin-bb3683229/"/>
         <SocialLink imgSrc={X} text={"Twitter/X"} link='https://twitter.com/youseffnegm' />
-        {/* <SocialLink imgSrc={githubwhite} text={"GitHub"} link="http://github.com/yousefnegmeldin" /> */}
         <SocialLink imgSrc={gmail} text="Email" link="mailto:yousefnegmdev@gmail.com" />
       </div>
       <div>
