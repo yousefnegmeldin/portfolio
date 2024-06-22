@@ -14,7 +14,7 @@ const page = () => {
           <p className='italic flex-wrap'>Feb 2024 - Current</p>
         </div>
         <p className='my-4 lg:mt-1 text-sm'>Backend Developer</p>
-        <p className='mt-4 lg:mt-1 text-base'>I was responsible for creating a backend for a social media app. </p>
+        <p className='mt-4 lg:mt-1 text-base'>I am responsible for creating a backend for a social media app. </p>
         <ul className='list-disc ml-8 mt-4 lg:mt-1 text-base'>
           <li>
           Wrote out API documentation for 20+ API endpoints using Postman.
