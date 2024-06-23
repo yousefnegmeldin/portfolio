@@ -14,12 +14,7 @@ export const metadata: Metadata = {
     title: "How I'll be spending my 2024 summer",
     description: "2024 summer goals",
     url: "https://www.yousefnegm.dev/blog/2024_summer",
-    images: [
-      {
-        url: "/opengraph-image.jpg",
-        alt: "Gopher",
-      },
-    ],
+    images: '/opengraph-image.jpg',
     type: "article",
   },
 };
