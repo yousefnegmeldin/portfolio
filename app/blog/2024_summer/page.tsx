@@ -12,14 +12,13 @@ const Page = () => {
 
   return (
     <>
-    <Head>
+    <Head key={1}>
         <title>How I&apos;ll be spending my 2024 summer</title>
         <meta property="og:title" content="How I'll be spending my 2024 summer" />
         <meta property="og:description" content="2024 summer goals" />
-        <meta property="og:image" content="/blogs/golang_summer.jpg" />
+        <meta property="og:image" content="./opengraph-image.jpg" />
         <meta property="og:url" content="https://www.yousefnegm.dev/blog/2024_summer" />
         <meta property="og:type" content="article" />
-        {/* Add additional meta tags as needed */}
       </Head>
     <div className='prose lg:prose-xl prose-neutral prose-invert prose-code:prose-neutral prose-pre:prose-neutral'>
         <Content />       
