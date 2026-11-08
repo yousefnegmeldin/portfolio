@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { entryUrl, formatDate } from '../lib/entries';
+interface Props {
+  entry: CollectionEntry<'writing'>;
+  lead?: boolean;
+}
+const { entry, lead = false } = Astro.props;
+const { title, description, cover, coverTone, coverX, coverY, date } = entry.data;
+---
+<article class:list={['essay-cover', { 'essay-cover-lead': lead, 'essay-cover-dark-text': cover && coverTone === 'dark' }]}>
+  {cover && <img class="essay-art" src={cover} alt="" loading={lead ? 'eager' : 'lazy'} decoding="async" style={{ objectPosition: `${coverX ?? 50}% ${coverY ?? 50}%` }} />}
+  <div class="essay-copy">
+    <time datetime={date.toISOString()}>{formatDate(date)}</time>
+    <h2><a href={entryUrl(entry)}>{title}</a></h2>
+    {description && <p>{description}</p>}
+  </div>
+</article>

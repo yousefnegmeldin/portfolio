@@ -1,0 +1,15 @@
+---
+interface Props {
+  src: string;
+  caption?: string;
+  captions?: string;
+}
+const { src, caption, captions } = Astro.props;
+---
+<figure>
+  <video src={src} controls playsinline preload="metadata" aria-label={caption || 'Article video'}>
+    {captions && <track kind="captions" src={captions} srclang="en" label="English" />}
+    <a href={src}>Open video</a>
+  </video>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

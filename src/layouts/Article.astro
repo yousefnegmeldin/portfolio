@@ -1,0 +1,40 @@
+---
+import Base from './Base.astro';
+import Figure from '../components/Figure.astro';
+import Video from '../components/Video.astro';
+import { entryUrl, formatDate } from '../lib/entries';
+import type { CollectionEntry } from 'astro:content';
+
+type Entry = CollectionEntry<'writing' | 'work' | 'notebook'>;
+interface Props {
+  entry: Entry;
+  related: Entry[];
+}
+const { entry, related } = Astro.props;
+const { title, description, date, draft, image, imageAlt, imageCaption, video, videoCaption, videoCaptions } = entry.data;
+const cover = 'cover' in entry.data ? entry.data.cover : undefined;
+const section = { writing: 'Writing', work: 'Work', notebook: 'Notebook' }[entry.collection];
+---
+<Base title={title} description={description} image={cover ?? image} draft={draft}>
+  <article class="article shell">
+    <header class="article-header">
+      <div class="article-meta">
+        <a href={`/${entry.collection}/`}>{section}</a>
+        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+      </div>
+      <h1>{title}</h1>
+      {description && <p>{description}</p>}
+    </header>
+    <div class="prose">
+      {image && <Figure src={image} alt={imageAlt ?? ''} caption={imageCaption} />}
+      <slot />
+      {video && <Video src={video} caption={videoCaption} captions={videoCaptions} />}
+    </div>
+    {related.length > 0 && (
+      <aside class="article-related">
+        <h2>{entry.collection === 'work' ? 'Related writing' : 'From Work'}</h2>
+        <ul>{related.map((other) => <li><a href={entryUrl(other)}>{other.data.title}</a></li>)}</ul>
+      </aside>
+    )}
+  </article>
+</Base>

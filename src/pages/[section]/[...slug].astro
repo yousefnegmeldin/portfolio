@@ -1,0 +1,31 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Article from '../../layouts/Article.astro';
+import { getEntries, relatesTo } from '../../lib/entries';
+
+export async function getStaticPaths() {
+  const [writing, work, notebook] = await Promise.all([
+    getEntries('writing'),
+    getEntries('work'),
+    getEntries('notebook'),
+  ]);
+  const entries = [...writing, ...work, ...notebook];
+  return entries.map((entry) => {
+    const related = entry.collection === 'work'
+      ? writing.filter((essay) => relatesTo(entry, essay))
+      : entry.collection === 'writing'
+        ? work.filter((project) => relatesTo(project, entry))
+        : [];
+    return { params: { section: entry.collection, slug: entry.id }, props: { entry, related } };
+  });
+}
+
+type Entry = CollectionEntry<'writing' | 'work' | 'notebook'>;
+interface Props {
+  entry: Entry;
+  related: Entry[];
+}
+const { entry, related } = Astro.props;
+const { Content } = await render(entry);
+---
+<Article {entry} {related}><Content /></Article>

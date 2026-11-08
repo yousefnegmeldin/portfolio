@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/portrait.jpg';
+import Base from '../layouts/Base.astro';
+import { entryUrl, getEntries } from '../lib/entries';
+import { site } from '../site';
+
+const [writing, work, notebook] = await Promise.all([
+  getEntries('writing'),
+  getEntries('work'),
+  getEntries('notebook'),
+]);
+const projects = work.filter(({ data }) => data.featured).slice(0, 2);
+const essay = writing[0];
+const note = notebook[0];
+---
+<Base>
+  <section class="hero">
+    <div class="shell hero-inner">
+      <div class="hero-copy">
+        <h1>In the <em>works.</em></h1>
+        <p>{site.intro}</p>
+      </div>
+      <div class="portrait">
+        <Image src={portrait} alt="Portrait of Yousef Negmeldin" width={512} height={512} format="webp" loading="eager" />
+      </div>
+    </div>
+  </section>
+  {(projects.length > 0 || essay || note) && (
+    <div class="shell home-content">
+      {projects.length > 0 && (
+        <section class="selected-work" aria-labelledby="selected-work">
+          <h2 id="selected-work">Selected work</h2>
+          <div class:list={['work-tiles', { 'one-project': projects.length === 1 }]}>
+            {projects.map((project) => (
+              <div class="work-tile"><h3><a href={entryUrl(project)}>{project.data.title}</a></h3></div>
+            ))}
+          </div>
+        </section>
+      )}
+      {(essay || note) && (
+        <div class="home-indexes">
+          {essay && <section><h2>Writing</h2><a href={entryUrl(essay)}>{essay.data.title}</a></section>}
+          {note && <section><h2>Notebook</h2><a href={entryUrl(note)}>{note.data.title}</a></section>}
+        </div>
+      )}
+    </div>
+  )}
+</Base>

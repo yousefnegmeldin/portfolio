@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import { entryUrl, getEntries, relatesTo } from '../../lib/entries';
+import { site } from '../../site';
+
+const [projects, writing] = await Promise.all([getEntries('work'), getEntries('writing')]);
+const { headline, company, description } = site.work;
+---
+<Base title="Work" description={description || `${headline} at ${company}.`}>
+  <div class="shell section-page work-page">
+    <header class="section-intro work-intro">
+      <p class="eyebrow">Work</p>
+      <h1>{headline}<br />at <em>{company}.</em></h1>
+      {description && <p>{description}</p>}
+    </header>
+    {projects.length > 0 && (
+      <section class="projects" aria-labelledby="projects">
+        <h2 id="projects">Case studies &amp; projects</h2>
+        {projects.map((project) => {
+          const { title, description, cover, coverX, coverY, runtime } = project.data;
+          const related = writing.filter((essay) => relatesTo(project, essay));
+          return (
+            <article class:list={['project', { 'project-with-media': cover || runtime }]}>
+              <div class="project-copy">
+                <h3><a href={entryUrl(project)}>{title}</a></h3>
+                {description && <p>{description}</p>}
+                {related.length > 0 && (
+                  <div class="project-related">
+                    <p>{related.length === 1 ? 'Related essay' : 'Related essays'}</p>
+                    <ul>{related.map((essay) => <li><a href={entryUrl(essay)}>{essay.data.title} <span aria-hidden="true">↗</span></a></li>)}</ul>
+                  </div>
+                )}
+              </div>
+              {cover ? (
+                <img class="project-image" src={cover} alt="" loading="lazy" decoding="async" style={{ objectPosition: `${coverX ?? 50}% ${coverY ?? 50}%` }} />
+              ) : runtime && (
+                <figure class="runtime">
+                  <span>{runtime}</span>
+                  <figcaption>Original runtime</figcaption>
+                </figure>
+              )}
+            </article>
+          );
+        })}
+      </section>
+    )}
+  </div>
+</Base>

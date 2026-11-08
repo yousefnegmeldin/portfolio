@@ -1,0 +1,212 @@
+media:
+  input: public/media
+  output: /media
+  extensions: [png, jpg, jpeg, webp, avif, gif, svg, mp4, webm, vtt]
+
+components:
+  title:
+    type: string
+    label: Title
+    required: true
+  description:
+    type: text
+    label: Excerpt
+  date:
+    type: date
+    label: Publication date
+    required: true
+    options:
+      format: yyyy-MM-dd
+  draft:
+    type: boolean
+    label: Draft
+    default: true
+    description: Keep this enabled until the entry is ready to publish.
+  body:
+    type: rich-text
+    label: Body
+    options:
+      format: markdown
+  image:
+    type: image
+    label: Article figure
+  imageAlt:
+    type: string
+    label: Figure alternative text
+  imageCaption:
+    type: string
+    label: Figure caption
+  video:
+    type: file
+    label: Article video
+    options:
+      extensions: [mp4, webm]
+  videoCaption:
+    type: string
+    label: Video caption
+  videoCaptions:
+    type: file
+    label: Video subtitles (WebVTT)
+    options:
+      extensions: [vtt]
+  cover:
+    type: image
+    label: Cover artwork
+    description: Fills the cover behind the title. Leave room around the lower-left corner for text.
+  coverX:
+    type: number
+    label: Cover horizontal position
+    default: 50
+    options:
+      min: 0
+      max: 100
+  coverY:
+    type: number
+    label: Cover vertical position
+    default: 50
+    options:
+      min: 0
+      max: 100
+
+content:
+  - name: writing
+    label: Writing
+    type: collection
+    path: content/writing
+    format: yaml-frontmatter
+    subfolders: false
+    filename: "{primary}.md"
+    exclude: &exclude [".gitkeep", "*.mdx", "**/*.mdx"]
+    view: &view
+      primary: title
+      fields: [title, date, draft]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        component: title
+      - name: description
+        component: description
+      - name: date
+        component: date
+      - name: draft
+        component: draft
+      - name: cover
+        component: cover
+      - name: coverX
+        component: coverX
+      - name: coverY
+        component: coverY
+      - name: coverTone
+        label: Cover text color
+        type: select
+        default: light
+        options:
+          values:
+            - { label: Light, value: light }
+            - { label: Dark, value: dark }
+      - name: body
+        component: body
+      - name: image
+        component: image
+      - name: imageAlt
+        component: imageAlt
+      - name: imageCaption
+        component: imageCaption
+      - name: video
+        component: video
+      - name: videoCaption
+        component: videoCaption
+      - name: videoCaptions
+        component: videoCaptions
+
+  - name: work
+    label: Work
+    type: collection
+    path: content/work
+    format: yaml-frontmatter
+    subfolders: false
+    filename: "{primary}.md"
+    exclude: *exclude
+    view: *view
+    fields:
+      - name: title
+        component: title
+      - name: description
+        component: description
+      - name: date
+        component: date
+      - name: draft
+        component: draft
+      - name: featured
+        type: boolean
+        label: Featured on the homepage
+        default: false
+      - name: runtime
+        type: string
+        label: Original runtime
+        description: Optional value for a case study about a slow job.
+      - name: cover
+        component: cover
+        label: Project artwork
+        description: Optional image shown alongside the project on Work.
+      - name: coverX
+        component: coverX
+      - name: coverY
+        component: coverY
+      - name: relatedWriting
+        label: Related essays
+        type: reference
+        options:
+          collection: writing
+          multiple: true
+          value: "{path}"
+          label: "{primary}"
+      - name: body
+        component: body
+      - name: image
+        component: image
+      - name: imageAlt
+        component: imageAlt
+      - name: imageCaption
+        component: imageCaption
+      - name: video
+        component: video
+      - name: videoCaption
+        component: videoCaption
+      - name: videoCaptions
+        component: videoCaptions
+
+  - name: notebook
+    label: Notebook
+    type: collection
+    path: content/notebook
+    format: yaml-frontmatter
+    subfolders: false
+    filename: "{primary}.md"
+    exclude: *exclude
+    view: *view
+    fields:
+      - name: title
+        component: title
+      - name: description
+        component: description
+      - name: date
+        component: date
+      - name: draft
+        component: draft
+      - name: body
+        component: body
+      - name: image
+        component: image
+      - name: imageAlt
+        component: imageAlt
+      - name: imageCaption
+        component: imageCaption
+      - name: video
+        component: video
+      - name: videoCaption
+        component: videoCaption
+      - name: videoCaptions
+        component: videoCaptions

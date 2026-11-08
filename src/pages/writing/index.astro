@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import EssayCover from '../../components/EssayCover.astro';
+import { getEntries } from '../../lib/entries';
+
+const entries = await getEntries('writing');
+const description = 'Essays about building software and understanding how it works.';
+---
+<Base title="Writing" {description}>
+  <div class="shell section-page">
+    <header class="section-intro">
+      <h1>Writing</h1>
+      <p>{description}</p>
+    </header>
+    {entries.length > 0 && (
+      <div class="essay-grid">
+        {entries.map((entry, index) => <EssayCover {entry} lead={index === 0} />)}
+      </div>
+    )}
+  </div>
+</Base>

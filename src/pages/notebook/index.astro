@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import { entryUrl, getEntries } from '../../lib/entries';
+
+const entries = await getEntries('notebook');
+const description = 'Small things I’m learning, trying, or keeping for later.';
+---
+<Base title="Notebook" {description}>
+  <div class="shell section-page">
+    <header class="section-intro notebook-intro">
+      <h1>Notebook</h1>
+      <p>{description}</p>
+    </header>
+    {entries.length > 0 && (
+      <ul class="notebook-list">
+        {entries.map((entry) => <li><a href={entryUrl(entry)}>{entry.data.title}</a></li>)}
+      </ul>
+    )}
+  </div>
+</Base>
