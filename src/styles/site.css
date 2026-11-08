@@ -98,7 +98,13 @@ h1, h2, h3 { font-family: var(--display); font-weight: 650; letter-spacing: -.04
 .work-intro h1 em { color: var(--violet); }
 .work-intro p { max-width: 52ch; }
 
-.projects h2 { font-size: clamp(30px, 4vw, 40px); margin-bottom: 18px; }
+:is(.experience, .projects) > h2 { font-size: clamp(30px, 4vw, 40px); margin-bottom: 18px; }
+.experience + .projects { margin-top: clamp(46px, 7vw, 68px); }
+.role { display: grid; gap: 12px; padding-block: 23px; border-top: 1px solid var(--rule); }
+.role:last-child { border-bottom: 1px solid var(--rule); }
+.role-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; }
+.role-heading h3 { font-size: clamp(27px, 3.5vw, 34px); }
+.role p { max-width: 62ch; color: var(--muted); font-size: 17px; }
 .project { padding-block: 24px; border-top: 1px solid var(--rule); }
 .project:last-child { border-bottom: 1px solid var(--rule); }
 .project-with-media { display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, 31%); gap: 30px; align-items: center; }

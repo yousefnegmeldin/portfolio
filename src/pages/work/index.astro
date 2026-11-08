@@ -1,18 +1,38 @@
 ---
+import { Image } from 'astro:assets';
+import brightskiesLogo from '../../assets/brightskies.png';
+import octopodsLogo from '../../assets/octopods.svg?url';
 import Base from '../../layouts/Base.astro';
 import { entryUrl, getEntries, relatesTo } from '../../lib/entries';
 import { site } from '../../site';
 
 const [projects, writing] = await Promise.all([getEntries('work'), getEntries('writing')]);
-const { headline, company, description } = site.work;
+const { headline, company, description, current, previous } = site.work;
 ---
-<Base title="Work" description={description || `${headline} at ${company}.`}>
+<Base title="Work" {description}>
   <div class="shell section-page work-page">
     <header class="section-intro work-intro">
       <p class="eyebrow">Work</p>
       <h1>{headline}<br />at <em>{company}.</em></h1>
-      {description && <p>{description}</p>}
+      <p>{description}</p>
     </header>
+    <section class="experience" aria-labelledby="experience">
+      <h2 id="experience">Experience</h2>
+      <article class="role">
+        <header class="role-heading">
+          <h3>{current.title}</h3>
+          <img src={octopodsLogo} width="136" height="34" alt={company} />
+        </header>
+        {current.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </article>
+      <article class="role">
+        <header class="role-heading">
+          <h3>{previous.title}</h3>
+          <Image src={brightskiesLogo} width={112} height={84} densities={[1, 2]} format="webp" alt="Brightskies" />
+        </header>
+        {previous.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </article>
+    </section>
     {projects.length > 0 && (
       <section class="projects" aria-labelledby="projects">
         <h2 id="projects">Case studies &amp; projects</h2>
