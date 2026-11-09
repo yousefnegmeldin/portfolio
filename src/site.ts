@@ -15,7 +15,7 @@ export const site = {
   ],
   aboutPage: {
     location: "Cairo, Egypt",
-    work: "I’m a software engineer at Octopods. Most days I’m in Ruby on Rails, building the backend of a messaging platform. I’m interested in what happens after software ships, especially the detective work of tracing a problem from a webhook through a queue and across services.",
+    work: "I’m a software engineer at Octopods. Most days I’m building things features using Ruby on Rails, building the backend of a messaging platform. I’m interested in what happens after software ships, especially the detective work of tracing a problem from a webhook through a queue and across services.",
     education:
       "I studied Software Engineering at the German International University in Egypt. For my thesis, I explored how to find security issues in microservices.",
     interests:
