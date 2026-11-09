@@ -15,7 +15,6 @@ const links = [
   { label: 'Writing', href: '/writing/' },
   { label: 'Work', href: '/work/' },
   { label: 'Notebook', href: '/notebook/' },
-  { label: 'Studying', href: '/studying/' },
   { label: 'whoami', href: '/about/' },
 ];
 ---
@@ -44,7 +43,9 @@ const links = [
         <a class="wordmark" href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>{site.author}</a>
         <nav aria-label="Main navigation">
           {links.map(({ label, href }) => (
-            <a href={href} aria-current={Astro.url.pathname === href ? 'page' : Astro.url.pathname.startsWith(href) ? 'location' : undefined}>{label}</a>
+            <a href={href} aria-current={Astro.url.pathname === href ? 'page' : Astro.url.pathname.startsWith(href) ? 'location' : undefined}>
+              {label === 'whoami' ? <code class="terminal-command"><span aria-hidden="true">$ </span>{label}</code> : label}
+            </a>
           ))}
         </nav>
       </div>

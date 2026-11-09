@@ -21,6 +21,10 @@ const { location, work, education, interests, publication } = site.aboutPage;
           <a href={publication.url}>{publication.title} <span aria-hidden="true">↗</span></a>
         </section>
         <p>{interests}</p>
+        <section class="about-studying" aria-labelledby="about-studying">
+          <h2 class="about-label" id="about-studying">Currently studying</h2>
+          <a href="/studying/">{site.studying.credential} {site.studying.specialty} <span aria-hidden="true">→</span></a>
+        </section>
       </div>
     </div>
   </article>
@@ -82,6 +86,15 @@ const { location, work, education, interests, publication } = site.aboutPage;
   .about-publication h2 { margin-bottom: 6px; }
   .about-publication a { color: var(--violet); }
   .about-publication a:hover { text-decoration-thickness: 2px; }
+
+  .about-studying {
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .about-studying h2 { margin-bottom: 6px; }
+  .about-studying a { color: var(--violet); }
+  .about-studying a:hover { text-decoration-thickness: 2px; }
 
   @media (min-width: 721px) {
     .about-body {

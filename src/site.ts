@@ -3,7 +3,7 @@ export const githubUsername = "yousefnegmeldin";
 export const site = {
   name: "In the Works",
   author: "Yousef Negmeldin",
-  intro: "I build software and products. I write about what I’m building, learning, and finding along the way.",
+  intro: "Engineering essays, project breakdowns, and notes on what I’m learning.",
   socials: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/yousefnegmeldin/" },
     { label: "GitHub", url: `https://github.com/${githubUsername}` },
@@ -19,7 +19,7 @@ export const site = {
     education:
       "I studied Software Engineering at the German International University in Egypt. For my thesis, I explored how to find security issues in microservices.",
     interests:
-      "I’m also learning guitar. My portfolio is where I keep track of what I’m building, random thougts that come to mind, and engineering articles I write.",
+      "I’m also learning guitar. My portfolio is where I keep track of what I’m building, random thoughts that come to mind, and engineering articles I write.",
     publication: {
       title: "MicroSec-Scan and SafeFix-K8s for automated analysis and repair in microservices and Kubernetes",
       url: "https://doi.org/10.1016/j.jss.2026.113154",

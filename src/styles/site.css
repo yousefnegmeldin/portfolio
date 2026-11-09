@@ -70,6 +70,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 650; letter-spacing: -.04
   box-shadow: 0 1px 3px #5027802e;
 }
 .site-header nav a:focus-visible { outline-offset: -2px; }
+.terminal-command { font-family: ui-monospace, monospace; }
+.terminal-command > span { opacity: .72; }
 
 .hero { background: var(--plum); color: var(--cream); overflow: clip; }
 .hero-inner {
