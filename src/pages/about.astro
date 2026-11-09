@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site';
+
+const { location, work, education, interests, publication } = site.aboutPage;
+---
+<Base title="About" description={site.about[0]}>
+  <article class="shell about-page">
+    <header class="about-heading">
+      <h1>Hi, I’m <em>Yousef.</em></h1>
+    </header>
+    <div class="about-body">
+      <div class="about-location">
+        <p class="about-label">Based in</p>
+        <p>{location}</p>
+      </div>
+      <div class="about-story">
+        <p>{work}</p>
+        <p>{education}</p>
+        <section class="about-publication" aria-labelledby="publication">
+          <h2 class="about-label" id="publication">Thesis publication</h2>
+          <a href={publication.url}>{publication.title} <span aria-hidden="true">↗</span></a>
+        </section>
+        <p>{interests}</p>
+      </div>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .about-page {
+    padding-block: clamp(44px, 5.3vw, 76px) clamp(56px, 6vw, 84px);
+  }
+
+  .about-heading {
+    display: grid;
+    gap: clamp(12px, 1.5vw, 18px);
+    padding-bottom: clamp(28px, 4vw, 40px);
+  }
+
+  .about-heading h1 {
+    font-size: clamp(46px, 8.5vw, 100px);
+    line-height: 1.04;
+    letter-spacing: -.055em;
+  }
+
+  .about-heading em { color: var(--violet); }
+
+  .about-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+    padding-top: clamp(24px, 3vw, 36px);
+    border-top: 1px solid var(--rule);
+  }
+
+  .about-label {
+    color: var(--muted);
+    font: 600 .8125rem/1.5 var(--body);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .about-location p + p {
+    margin-top: 8px;
+    font: 550 clamp(25px, 3vw, 33px)/1.2 var(--display);
+    letter-spacing: -.025em;
+  }
+
+  .about-story {
+    display: grid;
+    gap: clamp(18px, 2vw, 24px);
+    max-width: 620px;
+    font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
+    line-height: 1.6;
+  }
+
+  .about-publication {
+    padding-inline-start: 16px;
+    border-inline-start: 2px solid var(--rule);
+  }
+
+  .about-publication h2 { margin-bottom: 6px; }
+  .about-publication a { color: var(--violet); }
+  .about-publication a:hover { text-decoration-thickness: 2px; }
+
+  @media (min-width: 721px) {
+    .about-body {
+      grid-template-columns: 24% minmax(0, 620px);
+      column-gap: clamp(32px, 6.25vw, 90px);
+    }
+  }
+</style>

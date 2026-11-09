@@ -1,0 +1,139 @@
+---
+import { githubUsername } from '../site';
+
+const profile = `https://github.com/${githubUsername}`;
+const calendarUrl = `${import.meta.env.BASE_URL}github-calendar/`;
+---
+<section class="github-activity" aria-labelledby="github-activity">
+  <div class="activity-heading">
+    <div data-activity-heading>
+      <h2 id="github-activity">GitHub activity</h2>
+    </div>
+    <a href={profile}>View on GitHub <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="calendar-slot" data-calendar-url={calendarUrl}>
+    <div class="calendar-skeleton" aria-hidden="true"></div>
+  </div>
+</section>
+
+<script>
+  const slot = document.querySelector<HTMLElement>('[data-calendar-url]');
+  const heading = document.querySelector('[data-activity-heading]');
+
+  if (slot && heading) {
+    const loadCalendar = async () => {
+      const url = slot.dataset.calendarUrl;
+      if (!url) return;
+
+      slot.setAttribute('aria-busy', 'true');
+      try {
+        const response = await fetch(url, { signal: AbortSignal.timeout(8000) });
+        if (!response.ok) return;
+
+        const fragment = new DOMParser().parseFromString(await response.text(), 'text/html');
+        const calendar = fragment.querySelector('.activity-calendar');
+        const summary = fragment.querySelector('[data-calendar-summary]');
+        if (!calendar || !summary) return;
+
+        heading.append(summary);
+        slot.replaceWith(calendar);
+      } catch {
+        // The profile link remains available when the calendar cannot load.
+      } finally {
+        slot.removeAttribute('aria-busy');
+      }
+    };
+
+    const observeCalendar = () => {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        observer.disconnect();
+        void loadCalendar();
+      });
+      observer.observe(slot);
+    };
+
+    if (document.readyState === 'complete') observeCalendar();
+    else window.addEventListener('load', observeCalendar, { once: true });
+  }
+</script>
+
+<style is:global>
+  .github-activity {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .github-activity .calendar-slot { min-height: 1px; }
+
+  .github-activity:not(:first-child) {
+    margin-top: clamp(36px, 6vw, 60px);
+    padding-top: 26px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .github-activity .activity-heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px 24px;
+  }
+
+  .github-activity .activity-heading p { margin-top: 6px; color: var(--muted); }
+  .github-activity .activity-heading strong {
+    color: var(--violet);
+    font-size: 1.35em;
+    font-variant-numeric: tabular-nums;
+  }
+  .github-activity .activity-heading a { color: var(--violet); font-size: 15px; }
+
+  .github-activity :is(.activity-calendar, .calendar-skeleton) {
+    margin-top: 22px;
+    padding: clamp(16px, 2.5vw, 28px);
+    background: var(--plum);
+    color: var(--lavender);
+  }
+
+  .github-activity .calendar-skeleton { display: none; }
+  .github-activity .calendar-slot[aria-busy="true"] .calendar-skeleton { display: block; }
+  .github-activity .calendar-skeleton::before {
+    content: "";
+    display: block;
+    width: 100%;
+    min-height: 106px;
+    aspect-ratio: 990 / 153;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 11px, var(--plum) 11px 14px),
+      repeating-linear-gradient(90deg, #4a355f 0 11px, transparent 11px 14px);
+  }
+
+  .github-activity .calendar-scroll { overflow-x: auto; direction: rtl; }
+  .github-activity .calendar-scroll:focus-visible { outline: 2px solid var(--lavender); outline-offset: 4px; }
+  .github-activity .calendar-scroll svg { display: block; width: 100%; min-width: 690px; direction: ltr; }
+  .github-activity .calendar-scroll text { fill: currentColor; font-size: 13px; }
+
+  .github-activity .activity-level-0 { --activity-color: #3e2b50; }
+  .github-activity .activity-level-1 { --activity-color: #8055c4; }
+  .github-activity .activity-level-2 { --activity-color: #a672f4; }
+  .github-activity .activity-level-3 { --activity-color: #c89aff; }
+  .github-activity .activity-level-4 { --activity-color: #f3c1ff; }
+  .github-activity .calendar-scroll rect { fill: var(--activity-color); }
+
+  .github-activity .calendar-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 10px;
+    font-size: 13px;
+  }
+
+  .github-activity .calendar-hint { display: none; }
+  .github-activity .activity-legend { display: flex; align-items: center; gap: 6px; margin-inline-start: auto; }
+  .github-activity .legend-cell { width: 11px; height: 11px; border-radius: 2px; background: var(--activity-color); }
+
+  @media (max-width: 800px) {
+    .github-activity .calendar-hint { display: block; }
+  }
+</style>

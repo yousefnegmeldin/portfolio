@@ -1,0 +1,64 @@
+---
+import { getContributionCalendar } from '../lib/github';
+import { githubUsername } from '../site';
+
+export const partial = true;
+
+const calendar = await getContributionCalendar(githubUsername);
+const months = new Intl.DateTimeFormat('en', { month: 'short', timeZone: 'UTC' });
+const dates = new Intl.DateTimeFormat('en', { dateStyle: 'medium', timeZone: 'UTC' });
+const activity = ['No contributions', 'Low activity', 'Moderate activity', 'High activity', 'Very high activity'];
+const cell = 14;
+const step = 18;
+const left = 34;
+const top = 27;
+const firstWeekday = calendar ? new Date(calendar.days[0].date).getUTCDay() : 0;
+const squares = calendar?.days.map(({ date, level }, index) => ({
+  date: new Date(date),
+  level,
+  column: Math.floor((firstWeekday + index) / 7),
+  row: (firstWeekday + index) % 7,
+})) ?? [];
+const lastColumn = squares.at(-1)?.column ?? 0;
+const firstMonthStart = squares.find(({ date }) => date.getUTCDate() === 1);
+const monthLabels = squares.filter(({ date, column }, index) =>
+  (index === 0 && (firstMonthStart?.column ?? 3) >= 3)
+  || (date.getUTCDate() === 1 && column < lastColumn - 1)
+);
+const graphWidth = left + (lastColumn + 1) * step;
+const graphHeight = top + 7 * step;
+---
+<meta name="robots" content="noindex" />
+{calendar && (
+  <>
+    <p data-calendar-summary>
+      {calendar.total === null
+        ? 'Contributions over the last year'
+        : <><strong>{calendar.total.toLocaleString('en')}</strong> contributions in the last year</>}
+    </p>
+    <div class="activity-calendar">
+      <div class="calendar-scroll" role="region" aria-label="GitHub contribution calendar" tabindex="0">
+        <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} role="img" aria-label="Daily contribution activity over the last year">
+          {monthLabels.map(({ date, column }) => (
+            <text x={left + column * step} y="15">{months.format(date)}</text>
+          ))}
+          {['Mon', 'Wed', 'Fri'].map((day, index) => (
+            <text x="0" y={top + (index * 2 + 1) * step + 11}>{day}</text>
+          ))}
+          {squares.map(({ date, level, column, row }) => (
+            <rect class={`activity-level-${level}`} x={left + column * step} y={top + row * step} width={cell} height={cell} rx="2">
+              <title>{dates.format(date)} · {activity[level]}</title>
+            </rect>
+          ))}
+        </svg>
+      </div>
+      <div class="calendar-footer">
+        <div class="activity-legend" aria-hidden="true">
+          <span>Less</span>
+          {activity.map((_, level) => <span class={`legend-cell activity-level-${level}`}></span>)}
+          <span>More</span>
+        </div>
+      </div>
+    </div>
+  </>
+)}
