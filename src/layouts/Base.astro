@@ -41,7 +41,13 @@ const links = [
     <header class="site-header">
       <div class="shell header-inner">
         <a class="wordmark" href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>{site.author}</a>
-        <nav aria-label="Main navigation">
+        <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="main-navigation" hidden>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+            <path class="menu-open-icon" d="M4 6h16M4 12h16M4 18h16" />
+            <path class="menu-close-icon" d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        </button>
+        <nav id="main-navigation" aria-label="Main navigation">
           {links.map(({ label, href }) => (
             <a href={href} aria-current={Astro.url.pathname === href ? 'page' : Astro.url.pathname.startsWith(href) ? 'location' : undefined}>
               {label === 'whoami' ? <code class="terminal-command"><span aria-hidden="true">$ </span>{label}</code> : label}
@@ -51,5 +57,22 @@ const links = [
       </div>
     </header>
     <main id="main"><slot /></main>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+
+      if (toggle) {
+        toggle.hidden = false;
+        toggle.addEventListener('click', () => {
+          toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true'));
+        });
+
+        toggle.closest('.site-header')?.addEventListener('keydown', (event) => {
+          if (!(event instanceof KeyboardEvent) || event.key !== 'Escape' || toggle.getAttribute('aria-expanded') !== 'true') return;
+
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.focus();
+        });
+      }
+    </script>
   </body>
 </html>
